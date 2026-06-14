@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Corporativo</title>
+    <style>
+        body { font-family: sans-serif; background: #F0F2F5; margin: 0; padding: 20px; }
+        .box { background: #fff; padding: 25px; border-radius: 16px; max-width: 400px; margin: 50px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #2563EB; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .screen { display: none; }
+        .active { display: block; }
+        .card { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 10px; border-left: 5px solid #2563EB; }
+    </style>
+</head>
+<body>
+
+<div id="login" class="screen active box">
+    <h2 style="text-align:center">Portal de Acesso</h2>
+    <input type="text" id="u" placeholder="CPF ou Usuário">
+    <input type="password" id="p" placeholder="Senha">
+    <button onclick="check()">Entrar</button>
+</div>
+
+<div id="painelColab" class="screen box">
+    <h2>Olá, Colaborador</h2>
+    <div class="card">
+        <p><strong>Meu Salário:</strong> R$ 3.500,00</p>
+        <p><strong>Faltas:</strong> 0</p>
+    </div>
+    <button style="margin-top:20px; background:#666;" onclick="location.reload()">Sair</button>
+</div>
+
+<div id="painelAdmin" class="screen box">
+    <h2>Painel do Gestor</h2>
+    <div class="card">
+        <p><strong>Total de Funcionários:</strong> 15</p>
+        <p><strong>Vales Pendentes:</strong> 3</p>
+    </div>
+    <button style="margin-top:20px; background:#d9534f;" onclick="location.reload()">Sair</button>
+</div>
+
+<script>
+    function check() {
+        const u = document.getElementById('u').value.trim();
+        const p = document.getElementById('p').value.trim();
+        
+        if (u === 'admin' && p === 'admin123') {
+            document.getElementById('login').classList.remove('active');
+            document.getElementById('painelAdmin').classList.add('active');
+        } else if (u === '12345678901' && p === '123') {
+            document.getElementById('login').classList.remove('active');
+            document.getElementById('painelColab').classList.add('active');
+        } else {
+            alert('Dados inválidos!');
+        }
+    }
+</script>
+</body>
+</html>
